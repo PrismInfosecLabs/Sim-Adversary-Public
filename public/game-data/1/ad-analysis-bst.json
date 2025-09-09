@@ -1,0 +1,59 @@
+{
+  "key": "ad-analysis-bst",
+  "title": "Active Directory Analysis",
+  "description": "You analyze the Active Directory configuration for vulnerabilities.",
+  "choices": [
+    {
+      "label": "Take AD Snapshot (T1087)",
+      "mitreId": "T1087",
+      "hourCost": 1,
+      "detectionChance": 30,
+      "successChance": 100,
+      "next": "ad-analysis-bst",
+      "requiredItems": [],
+      "rewards": ["AD Snapshot"]
+    },
+    {
+      "label": "Search AD Snapshot for kerberoastable account (T1046)",
+      "mitreId": "T1558.003",
+      "hourCost": 2,
+      "detectionChance": 0,
+      "successChance": 30,
+      "limit": 1,
+      "next": "ad-analysis",
+      "requiredItems": ["AD Snapshot"],
+      "rewards": ["Kerberostable account"]
+    },
+    {
+      "label": "Search AD Snapshot for Misconfigured ACLs (T1069)",
+      "mitreId": "T1069",
+      "hourCost": 4,
+      "detectionChance": 0,
+      "successChance": 60,
+      "limit": 1,
+      "next": "ad-analysis-bst",
+      "requiredItems": ["AD Snapshot"],
+      "rewards": ["ACL Misconfiguration"]
+    },
+    {
+      "label": "Search AD Snapshot for RBCD (T1046)",
+      "mitreId": "T1046",
+      "hourCost": 4,
+      "detectionChance": 0,
+      "successChance": 60,
+      "limit": 1,
+      "next": "ad-analysis-bst",
+      "requiredItems": ["AD Snapshot"],
+      "rewards": ["RBCD Misconfiguration"]
+    },
+    {
+      "label": "Return to Bastion",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "bastion",
+      "requiredItems": [["Server Admin credentials", "Developer credentials"]]
+    }
+  ]
+}

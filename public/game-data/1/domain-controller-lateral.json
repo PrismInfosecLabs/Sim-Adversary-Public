@@ -1,0 +1,74 @@
+{
+  "key": "domain-controller-lateral",
+  "title": "Lateral Movement: Domain Controller",
+  "description": "You are attempting to move laterally to the Domain Controller.",
+  "choices": [
+    {
+      "label": "WMI (T1047)",
+      "mitreId": "T1047",
+      "hourCost": 1,
+      "detectionChance": 40,
+      "successChance": 100,
+      "next": "domain-controller",
+      "requiredItems": [
+        ["Domain Controller Machine Account","Domain Administrator credentials", "NAA credentials"]
+        , "Network Map"
+      ]
+    },
+    {
+      "label": "SMB/Windows Admin Shares (T1021.002)",
+      "mitreId": "T1021.002",
+      "hourCost": 1,
+      "detectionChance": 30,
+      "successChance": 100,
+      "next": "domain-controller",
+      "requiredItems": [
+        ["Domain Controller Machine Account","Domain Administrator credentials", "NAA credentials"]
+        , "Network Map"
+      ]
+    },
+    {
+      "label": "DCOM (T1021.003)",
+      "mitreId": "T1021.003",
+      "hourCost": 1,
+      "detectionChance": 50,
+      "successChance": 100,
+      "next": "domain-controller",
+      "requiredItems": [
+        ["Domain Controller Machine Account","Domain Administrator credentials", "NAA credentials"]
+        , "Network Map"
+      ]
+    },
+    {
+      "label": "RDP (T1021.001)",
+      "mitreId": "T1021.001",
+      "hourCost": 1,
+      "detectionChance": 20,
+      "successChance": 100,
+      "next": "domain-controller",
+      "isLateralMovement": true,
+      "lateralSafeSources": ["bastion"],
+      "requiredItems": [["Domain Administrator credentials", "NAA credentials"], "Network Map"]
+    },
+    {
+      "label": "SCCM Deployed Foothold (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 1,
+      "detectionChance": 20,
+      "successChance": 100,
+      "next": "domain-controller",
+      "isLateralMovement": true,
+      "requiredItems": ["Domain Controller Foothold", "Network Map"],
+      "rewards": ["Domain Controller Machine Account"]
+    },
+    {
+      "label": "Return to Lateral Movement",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "lateral-movement",
+      "requiredItems": []
+    }
+  ]
+}

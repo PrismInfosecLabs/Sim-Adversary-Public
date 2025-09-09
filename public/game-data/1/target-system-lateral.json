@@ -1,0 +1,62 @@
+{
+  "key": "target-system-lateral",
+  "title": "Lateral Movement: Target System",
+  "description": "You attempt to move laterally to a server.",
+  "choices": [
+    {
+      "label": "WMI (T1047)",
+      "mitreId": "T1047",
+      "hourCost": 1,
+      "detectionChance": 40,
+      "successChance": 100,
+      "next": "target-system",
+      "requiredItems": ["Target system credentials", "Network Map"]
+    },
+    {
+      "label": "SMB/Windows Admin Shares (T1021.002)",
+      "mitreId": "T1021.002",
+      "hourCost": 1,
+      "detectionChance": 30,
+      "successChance": 100,
+      "next": "target-system",
+      "requiredItems": ["Target system credentials", "Network Map"]
+    },
+    {
+      "label": "DCOM (T1021.003)",
+      "mitreId": "T1021.003",
+      "hourCost": 1,
+      "detectionChance": 50,
+      "successChance": 100,
+      "next": "target-system",
+      "requiredItems": ["Target system credentials", "Network Map"]
+    },
+    {
+      "label": "RDP (T1021.001)",
+      "mitreId": "T1021.001",
+      "hourCost": 1,
+      "detectionChance": 20,
+      "successChance": 100,
+      "next": "target-system",
+      "requiredItems": ["Target system credentials", "Network Map"]
+    },
+    {
+      "label": "SCCM Deployed Foothold (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 1,
+      "detectionChance": 20,
+      "successChance": 100,
+      "next": "target-system",
+      "requiredItems": ["Target System Foothold", "Network Map"],
+      "rewards": ["Target System Machine Account"]
+    },
+    {
+      "label": "Return to Lateral Movement",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "lateral-movement",
+      "requiredItems": []
+    }
+  ]
+}

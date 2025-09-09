@@ -1,0 +1,163 @@
+{
+  "name": "Phishing Scenario Events",
+  "description": "Events specific to phishing-based attack scenarios",
+  "applicableScenarios": ["1"],
+  "applicableTeams": ["red"],
+  "events": [
+    {
+      "id": "email_security_alert",
+      "title": "📧 Email Security Alert Triggered",
+      "message": "Your phishing email has triggered an automated email security alert. Security teams are now analyzing similar emails and may identify your campaign.",
+      "category": "phishing",
+      "triggers": ["detection"],
+      "baseProbability": 0.4,
+      "oneTime": false,
+      "messageType": "warning",
+      "conditions": {
+        "minSteps": 3,
+        "minDetections": 1
+      },
+      "modifiers": {
+        "defenseMaturity": {
+          "1": 0.6,
+          "2": 1.0,
+          "3": 1.5
+        }
+      },
+      "effects": {
+        "hours": -3,
+        "gameState": {
+          "emailSecurityAlert": true,
+          "globalDetectionIncrease": 20
+        }
+      }
+    },
+    {
+      "id": "user_reports_phishing",
+      "title": "👤 User Reports Suspicious Email",
+      "message": "A vigilant user has reported your phishing email to the security team. They are now conducting a detailed analysis of your email infrastructure.",
+      "category": "phishing",
+      "triggers": ["step"],
+      "baseProbability": 0.15,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 2,
+        "maxSteps": 10
+      },
+      "modifiers": {
+        "skillLevel": {
+          "1": 1.8,
+          "2": 1.0,
+          "3": 0.4
+        }
+      },
+      "effects": {
+        "hours": -4,
+        "gameState": {
+          "userReportedPhishing": true,
+          "globalDetectionIncrease": 25
+        }
+      }
+    },
+    {
+      "id": "email_domain_blacklisted",
+      "title": "🚫 Email Domain Blacklisted",
+      "message": "Your phishing domain has been blacklisted by email security services. You need to establish new email infrastructure to continue operations.",
+      "category": "phishing",
+      "triggers": ["detection"],
+      "baseProbability": 0.3,
+      "oneTime": true,
+      "conditions": {
+        "minDetections": 2,
+        "minSteps": 5
+      },
+      "effects": {
+        "hours": -6,
+        "gameState": {
+          "domainBlacklisted": true
+        }
+      }
+    },
+    {
+      "id": "email_attachment_analysis",
+      "title": "🔍 Email Attachment Analysis",
+      "message": "Security teams have begun detailed analysis of your malicious email attachments. They may develop signatures to detect similar files.",
+      "category": "phishing",
+      "triggers": ["detection"],
+      "baseProbability": 0.35,
+      "oneTime": true,
+      "conditions": {
+        "minDetections": 1,
+        "minSteps": 6
+      },
+      "effects": {
+        "gameState": {
+          "attachmentAnalysis": true,
+          "globalDetectionIncrease": 15,
+          "analysisStepsRemaining": 8
+        }
+      }
+    },
+    {
+      "id": "email_security_training",
+      "title": "🎓 Emergency Security Training",
+      "message": "Your phishing campaign has prompted the organization to conduct emergency security awareness training. Employees will be more cautious going forward.",
+      "category": "phishing",
+      "triggers": ["detection"],
+      "baseProbability": 0.2,
+      "oneTime": true,
+      "conditions": {
+        "minDetections": 2,
+        "minSteps": 8
+      },
+      "effects": {
+        "gameState": {
+          "emergencyTraining": true,
+          "globalDetectionIncrease": 30,
+          "trainingStepsRemaining": 20
+        }
+      }
+    },
+    {
+      "id": "phishing_kit_compromise",
+      "title": "💻 Phishing Kit Compromise",
+      "message": "Your phishing kit has been compromised and is being analyzed by security researchers. You need to develop new tools and techniques.",
+      "category": "phishing",
+      "triggers": ["detection"],
+      "baseProbability": 0.15,
+      "oneTime": true,
+      "conditions": {
+        "minDetections": 3,
+        "minSteps": 12
+      },
+      "effects": {
+        "hours": -8,
+        "gameState": {
+          "phishingKitCompromised": true
+        }
+      }
+    },
+    {
+      "id": "executive_impersonation",
+      "title": "👔 Executive Impersonation Success",
+      "message": "You've successfully impersonated a senior executive in your phishing campaign. This has provided access to sensitive communications and high-level credentials.",
+      "category": "phishing",
+      "triggers": ["success"],
+      "baseProbability": 0.08,
+      "oneTime": true,
+      "messageType": "success",
+      "conditions": {
+        "minSteps": 10
+      },
+      "modifiers": {
+        "skillLevel": {
+          "2": 0.8,
+          "3": 1.5
+        }
+      },
+      "effects": {
+        "contingencies": 1
+      }
+    }
+  ]
+}

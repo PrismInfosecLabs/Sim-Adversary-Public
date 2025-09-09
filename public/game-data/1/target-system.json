@@ -1,0 +1,36 @@
+{
+  "key": "target-system",
+  "title": "Target System",
+  "description": "You have reached the target system.  Time to complete the objective.",
+  "choices": [
+    {
+      "label": "Attempt to complete your objective (T1485)",
+      "mitreId": "T1485",
+      "hourCost": 2,
+      "detectionChance": 80,
+      "successChance": 90,
+      "next": "goal",
+      "requiredItems": [
+        ["Target system credentials", "Target System Machine Account"]
+      ]
+    },
+    {
+      "label": "Back to Lateral Movement",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "lateral-movement",
+      "requiredItems": []
+    },
+    {
+      "label": "Return to initial foothold",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "foothold-server",
+      "requiredItems": []
+    }
+  ]
+}

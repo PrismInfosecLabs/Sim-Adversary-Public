@@ -1,0 +1,48 @@
+{
+  "key": "template", //mandatory - must match the file name (minus the .json)
+  "title": "Title", //mandatory - displayed in game as the name of the current room
+  "description": [
+    "Lorem Ipsum",
+    "Line 2",
+    "You can add",
+    "As many extra lines/paragraphs as you want"
+  ], // the description of the room - uses an array of strings
+  "choices": [
+    {
+      "label": "What do you want to offer as an option?", //mandatory
+      "mitreId": "Find the mitre ID and put it here - used for URLs to MITRE", //mandatory
+      "hourCost": 1, //mandatory any value here will be deducted from game hours
+      "detectionChance": 40, //mandatory - treated as a percentage chance
+      "successChance": 100, //mandatory - treated as a percentage chance
+      "next": "template", //mandatory - name of the next game file which must match the key
+      "limit": 1, //optional - value here is the number of times this can be attempted before success chance is treated as 0%
+      "isLateralMovement": true, //optional flag if needed for lateral movement
+      "lateralSafeSources": ["template"], //optional if isLateralMovement flag is true we can set a safe place to laterally move from to avoid triggering detection
+      "requiredItems": [ //optional requirements for the activity - supports OR and AND requirements
+        ["X", "Y"], //treat this as an OR statement
+        "Z" // add this to make it an AND
+      ], //this example means (X OR Y) AND Z for requirements, format can expand for multiple ANDs and ORs - leave as just [] if you don't have any requirements for this action
+      "rewards": ["only reward"] //optional - remove if you don't want to give anything
+    },
+    {
+      "label": "Another Option",
+      "mitreId": "Another ID",
+      "hourCost": 20,
+      "detectionChance": 30,
+      "successChance": 60,
+      "next": "next",
+      "isLateralMovement": false,
+      "requiredItems": [], //no requirements for this
+      "rewards": ["first reward", "second reward"] //optional - remove if you don't want to give anything
+    },
+    {
+      "label": "Test Option", //special choice type used for the testing System
+      "mitreId": "Test ID",
+      "testType": "credentials", //type of test this will be - these are defined in gameConfig.js
+      "hourCost": 20, //how much time is used to do this
+      "detectionChance": 30, //how likely is it that this activity will trigger a detection
+      "next": "next", //where do we go next?
+      "requiredItems": ["credentials"], //requirements for the test
+    }
+  ]
+}

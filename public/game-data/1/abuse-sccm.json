@@ -1,0 +1,81 @@
+{
+  "key": "Abuse-sccm",
+  "title": "Abuse-SCCM",
+  "description": "You have You are attempting to abuse SCCM...",
+  "choices": [
+    {
+      "label": "Gain foothold on Target System (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 4,
+      "detectionChance": 70,
+      "successChance": 60,
+      "next": "abuse-sccm",
+      "requiredItems": [
+        ["SCCM Admin Token", "SCCM Admin credentials", "NAA credentials"]
+        , "Network Map"
+      ],
+      "rewards": "Target System Foothold"
+    },
+    {
+      "label": "Gain foothold on Workstation (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 4,
+      "detectionChance": 20,
+      "successChance": 60,
+      "next": "abuse-sccm",
+      "requiredItems": [
+        ["SCCM Admin Token", "SCCM Admin credentials", "NAA credentials"]
+        , "Network Map"
+      ],
+      "rewards": ["Workstation Foothold"]
+    },
+    {
+      "label": "Gain foothold on Server (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 4,
+      "detectionChance": 20,
+      "successChance": 60,
+      "next": "abuse-sccm",
+      "requiredItems": [
+        ["SCCM Admin Token", "SCCM Admin credentials", "NAA credentials"]
+        , "Network Map"
+      ],
+      "rewards": ["Server Foothold"]
+    },
+    {
+      "label": "Gain foothold on Bastion (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 4,
+      "detectionChance": 30,
+      "successChance": 60,
+      "next": "abuse-sccm",
+      "requiredItems": [
+        ["SCCM Admin Token", "SCCM Admin credentials", "NAA credentials"]
+        , "Network Map"
+      ],
+      "rewards": ["Bastion Foothold"]
+    },
+    {
+      "label": "Gain foothold on Domain Controller (T1072)",
+      "mitreId": "T1072",
+      "hourCost": 4,
+      "detectionChance": 80,
+      "successChance": 80,
+      "next": "abuse-sccm",
+      "requiredItems": [
+        ["SCCM Admin Token", "SCCM Admin credentials", "NAA credentials"]
+        , "Network Map"
+      ],
+      "rewards": ["Domain Controller Foothold"]
+    },
+    {
+      "label": "Return to SCCM",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "SCCM-server",
+      "requiredItems": []
+    }
+  ]
+}

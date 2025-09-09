@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sim-Adversary</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <header>
+      <div id="logo-container">
+        <img
+          id="logo"
+          src="images/logo.png"
+          alt="Game Logo"
+          style="max-width: 80px; height: auto"
+        />
+      </div>
+      <h1>Sim-Adversary - The Adversary Simulator</h1>
+    </header>
+
+    <main class="game-container" id="gameContainer">
+      <section id="intro" class="form-container">
+        <h2>Welcome, Red Teamer!</h2>
+        <label for="playerName">Enter Your Name:</label>
+        <input
+          type="text"
+          id="playerName"
+          class="input-field"
+          placeholder="Your Alias"
+        />
+
+        <label for="scenario">Choose Your Scenario:</label>
+        <select id="mode" class="input-field"> 
+          <option value="">-- Select Scenario --</option>
+          <option value="1">External Phishing Scenario</option>
+          <option value="2">own stories</option>
+          <option value="3">to play!</option>
+        </select>
+        <div id="scenarioError" class="text-red-500 mt-2 hidden">
+          Please select a scenario.
+        </div>
+
+        <label for="defenceMaturity">Defence Maturity:</label>
+        <select id="defenceMaturity" class="input-field">
+          <option value="1">Low</option>
+          <option value="2">Medium</option>
+          <option value="3">High</option>
+        </select>
+
+        <label for="attackerSkill">Attacker Skill Level:</label>
+        <select id="playerSkill" class="input-field">
+          <option value="1">Unskilled</option>
+          <option value="2">Organised Crime</option>
+          <option value="3">Nation State</option>
+        </select>
+
+        <button id="startGameBtn" class="button-container">
+          Start Adventure
+        </button>
+
+        <div class="mt-6">
+          <button id="togglePathsBtn" class="button-container">
+            View Past Paths
+          </button>
+          <button id="clearPathsBtn" class="button-container">
+            Clear Database
+          </button>
+        </div>
+      </section>
+
+      <section id="game-info" class="form-container">
+        <div id="gameInfo" class="game-info-panel">
+          <h2>🎯 Sim-Adversary - The Adversary Simulator</h2>
+          <p>
+            Simulate red team operations and test strategies for reaching a target system. Manage limited resources and avoid detection while collecting artefacts and credentials across a range of customizable scenarios.
+          </p>
+
+          <h3>🎯 Objectives</h3>
+          <div class="objectives">
+            <div class="primary-objective">
+              <h4>🏆 Primary Mission</h4>
+              <p>Reach the <strong>target system</strong> and complete the compromise action. This is your core objective - everything else is secondary.</p>
+            </div>
+            
+            <div class="secondary-objectives">
+              <h4>⭐ High-Value Targets (Choose Your Path)</h4>
+              <p>Focus on 2-3 of these based on your approach:</p>
+              <ul>
+                <li><strong>Crown Jewels:</strong> NTDS.dit - The ultimate prize</li>
+                <li><strong>Administrative Access:</strong> Domain Admin, SCCM Admin, or Target System credentials</li>
+                <li><strong>Intelligence Gathering:</strong> Vulnerability Report + Network Map </li>
+                <li><strong>Persistence:</strong> Establish lasting access + key machine accounts</li>
+              </ul>
+            </div>
+            
+            <div class="bonus-objectives">
+              <h4>💎 Bonus Opportunities</h4>
+              <p>Additional scoring opportunities you may encounter:</p>
+              <ul>
+                <li>Exploit security misconfigurations (ACL, RBCD, ADCS)</li>
+                <li>Capture credential hashes and tokens</li>
+                <li>Establish footholds on critical systems</li>
+              </ul>
+            </div>
+            
+            <div class="constraints">
+              <h4>⚠️ Mission Constraints</h4>
+              <p>Failure occurs if you run out of <strong>time (140 hrs)</strong> or <strong>contingencies (3)</strong> and get detected.</p>
+            </div>
+          </div>
+
+          <h3>⚙️ Mechanics Overview</h3>
+          <ul style="columns: 2; column-gap: 2em;">
+            <li>Each action has success/detection %</li>
+            <li>Some actions are one-time only</li>
+            <li>Repeatable actions vary in risk</li>
+            <li>Contingencies bypass failure or detection</li>
+            <li>Scenarios differ in starting tools/resources</li>
+            <li>SOC maturity affects detection rate</li>
+          </ul>
+
+          <h3>🧠 Attacker Profiles & SOC Impact</h3>
+          <table class="past-paths-table">
+            <thead>
+              <tr>
+                <th>Profile</th>
+                <th>Speed</th>
+                <th>Detection</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🎩 Nation State</td>
+                <td>+25% duration</td>
+                <td>-50%</td>
+                <td>-75%</td>
+              </tr>
+              <tr>
+                <td>💰 Organised Crime</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>🔧 Unskilled</td>
+                <td>-25% duration</td>
+                <td>+50%</td>
+                <td>+50%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="past-paths-table" style="margin-top: 0.5em;">
+            <thead>
+              <tr>
+                <th>SOC Maturity</th>
+                <th>Detection</th>
+                <th>Score Modifier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>📈 High</td>
+                <td>More likely</td>
+                <td>+25%</td>
+              </tr>
+              <tr>
+                <td>📊 Medium</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>📉 Low</td>
+                <td>Less likely</td>
+                <td>-25%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>📊 Scoring</h3>
+          <ul style="columns: 2; column-gap: 2em;">
+            <li>Inventory collected</li>
+            <li>Detections triggered</li>
+            <li>Contingencies remaining</li>
+            <li>Goal completion</li>
+            <li>Attacker profile impact</li>
+            <li>SOC maturity modifier</li>
+          </ul>
+
+          <h3>📚 Review & Analysis</h3>
+          <p>
+            At the end of each game, your attack path and score are stored. Every technique is mapped to the <a href="https://attack.mitre.org/" target="_blank">MITRE ATT&CK</a> framework for learning and analysis.
+          </p>
+        </div>
+
+        <div id="pathsContainer" class="hidden">
+          <h3>Past Paths</h3>
+          <div class="past-paths-scroll-container">
+            <div id="pastPathsList">
+              <table class="past-paths-table">
+                <tbody id="pastPathsTableBody">
+                  <!-- Past paths will be dynamically populated here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="game-area" class="hidden">
+        <div id="gameFeedback"></div>
+        <div id="stepContainer"></div>
+      </section>
+
+      <!-- Enhanced Sidebar Structure -->
+      <aside id="game-sidebar" class="hidden">
+        <!-- Enhanced Timer -->
+        <div id="timer">30:00</div>
+        
+        <!-- Player Stats Section -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-header">📊 Player Stats</h3>
+          <div class="stat-item">
+            <span class="stat-label">⏰ Hours:</span>
+            <span id="hours-remaining" class="stat-value">160</span>
+          </div>
+          <div class="stat-item contingency-display">
+            <span class="stat-label">🛡️ Contingencies:</span>
+            <span id="contingencies-remaining" class="stat-value">3</span>
+          </div>
+        </div>
+        
+        <!-- Game Configuration Section -->
+        <div class="sidebar-section">
+          <h3 class="sidebar-header">🎮 Game Config</h3>
+          <div class="config-item">
+            <span class="config-label">Mode:</span>
+            <span id="mode-display" class="config-value">-</span>
+          </div>
+          <div class="config-item">
+            <span class="config-label">Skill:</span>
+            <span id="skill-display" class="config-value">-</span>
+          </div>
+          <div class="config-item">
+            <span class="config-label">Defense:</span>
+            <span id="defence-display" class="config-value">-</span>
+          </div>
+        </div>
+        
+        <!-- Enhanced Inventory -->
+        <div id="inventory">
+          <h3>🎒 Inventory</h3>
+          <ul id="inventory-list"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Game Over Section -->
+    <section id="gameOverArea" class="hidden form-container">
+      <div id="gameOverContent"></div>
+      <button onclick="location.reload()" class="button-container">
+        Play Again
+      </button>
+    </section>
+
+    <!-- Load configuration first -->
+    <script src="gameConfig.js"></script>
+
+    <!-- Load all modules -->
+    <script src="testingSystem.js"></script>
+    <script src="gameScoring.js"></script>
+    <script src="pastPathsManager.js"></script>
+    <script src="inventoryManager.js"></script>
+    <script src="uiHelpers.js"></script>
+    <script src="randomEventsManager.js"></script> 
+
+    <!-- Load main game logic last -->
+    <script src="game.js"></script>
+  </body>
+</html>

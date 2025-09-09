@@ -1,0 +1,100 @@
+{
+  "key": "server",
+  "title": "Server",
+  "description": "You have laterally moved to a server! Detection chance is slightly lower here.  Now what?",
+  "choices": [
+    {
+      "label": "Conduct Host Reconnaissance",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "host-reconnaissance-srv",
+      "requiredItems": []
+    },
+    {
+      "label": "Conduct Network Reconnaissance",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "network-reconnaissance-srv",
+      "requiredItems": []
+    },
+    {
+      "label": "Conduct AD Analysis",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "ad-analysis-srv",
+      "requiredItems": []
+    },
+    {
+      "label": "Exploit misconfigurations",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "exploit-misconfiguration-srv",
+      "requiredItems": [["AD Snapshot", "ADCS Misconfiguration"]]
+    },
+    {
+      "label": "Lateral Movement Options",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "lateral-movement",
+      "requiredItems": []
+    },
+    {
+      "label": "Test Credentials",
+      "testType": "credentials",
+      "mitreId": "T1550",
+      "hourCost": 1,
+      "detectionChance": 5,
+      "next": "server",
+      "requiredItems": ["credentials"]
+    },
+    {
+      "label": "Password Cracking - NTDS.dit",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "server",
+      "requiredItems": ["NTDS.dit"],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Password Cracking - PXE Media",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "server",
+      "requiredItems": ["NAA Password Hash"],
+      "rewards": ["NAA credentials"]
+    },
+    {
+      "label": "Password Cracking - Kerberoastable Account",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "server",
+      "requiredItems": ["Kerberostable account"],
+      "rewards": ["Domain Administrator credentials"]
+    },
+    {
+      "label": "Return to initial foothold",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "foothold-server",
+      "requiredItems": []
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "name": "Operational Events",
+  "description": "General operational challenges and complications during red team activities",
+  "applicableScenarios": ["1", "2", "3"],
+  "applicableTeams": ["red"],
+  "events": [
+    {
+      "id": "tool_malfunction",
+      "title": "🔧 Tool Malfunction",
+      "message": "One of your primary tools has malfunctioned and requires time to repair or replace. This setback delays your operations.",
+      "category": "operational",
+      "triggers": ["failure"],
+      "baseProbability": 0.2,
+      "oneTime": false,
+      "messageType": "warning",
+      "conditions": {
+        "minSteps": 5
+      },
+      "modifiers": {
+        "skillLevel": {
+          "1": 1.8,
+          "2": 1.0,
+          "3": 0.4
+        }
+      },
+      "effects": {
+        "hours": -3
+      }
+    },
+    {
+      "id": "payload_corruption",
+      "title": "💾 Payload Corruption",
+      "message": "Your payload has become corrupted during transmission. You need to spend time rebuilding and testing it before continuing operations.",
+      "category": "operational",
+      "triggers": ["failure"],
+      "baseProbability": 0.15,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 8,
+        "maxSteps": 25
+      },
+      "effects": {
+        "hours": -4
+      }
+    },
+    {
+      "id": "communication_delay",
+      "title": "📡 Communication Delay",
+      "message": "Network latency issues are causing significant delays in your command and control communications, slowing down your operations.",
+      "category": "operational",
+      "triggers": ["step"],
+      "baseProbability": 0.1,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 3
+      },
+      "effects": {
+        "hours": -2
+      }
+    },
+    {
+      "id": "note_updates",
+      "title": "Operatore Notes Updates needed",
+      "message": "You realise that your notes are confusing, whcih will impact your report later. You need to spend some time sorting out your notes for the report.",
+      "category": "operational",
+      "triggers": ["step"],
+      "baseProbability": 0.06,
+      "oneTime": true,
+      "conditions": {
+        "minSteps": 20,
+        "minHours": 50
+      },
+      "effects": {
+        "hours": -6
+      }
+    },
+    {
+      "id": "unexpected_system_behavior",
+      "title": "❓ Unexpected System Behavior",
+      "message": "The target system is behaving unexpectedly, possibly due to custom configurations or unknown security measures. Additional reconnaissance is required.",
+      "category": "operational",
+      "triggers": ["failure"],
+      "baseProbability": 0.18,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 6
+      },
+      "effects": {
+        "hours": -3
+      }
+    },
+    {
+      "id": "internet_connectivity_issues",
+      "title": "🌐 Internet Connectivity Issues",
+      "message": "Internet connectivity problems are affecting your ability to maintain persistent access and download additional tools.",
+      "category": "operational",
+      "triggers": ["step"],
+      "baseProbability": 0.05,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 4
+      },
+      "effects": {
+        "hours": -2,
+        "gameState": {
+          "connectivityIssues": true,
+          "connectivityStepsRemaining": 3
+        }
+      }
+    },
+    {
+      "id": "antivirus_update",
+      "title": "🛡️ Antivirus Signature Update",
+      "message": "The target organization has received an antivirus signature update that detects some of your tools. You need to modify your approach.",
+      "category": "operational",
+      "triggers": ["step"],
+      "baseProbability": 0.12,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 10,
+        "maxSteps": 30
+      },
+      "effects": {
+        "hours": -3,
+        "gameState": {
+          "antivirusUpdated": true,
+          "globalDetectionIncrease": 15
+        }
+      }
+    },
+    {
+      "id": "cg_coordination_issue",
+      "title": "👥 Control Group Coordination Issue",
+      "message": "A coordination issue between control group members has caused a temporary delay in operations. Time is needed to reorganize and synchronize efforts.",
+      "category": "operational",
+      "triggers": ["step"],
+      "baseProbability": 0.07,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 12
+      },
+      "modifiers": {
+        "skillLevel": {
+          "1": 1.5,
+          "2": 1.0,
+          "3": 0.6
+        }
+      },
+      "effects": {
+        "hours": -4
+      }
+    },
+    {
+      "id": "certificate_expiration",
+      "title": "📜 Certificate Expiration",
+      "message": "A critical certificate used in your infrastructure has expired unexpectedly. You need to generate new certificates and update your tools.",
+      "category": "operational",
+      "triggers": ["step"],
+      "baseProbability": 0.04,
+      "oneTime": true,
+      "conditions": {
+        "minSteps": 18,
+        "minHours": 35
+      },
+      "effects": {
+        "hours": -5,
+        "gameState": {
+          "certificateExpired": true
+        }
+      }
+    }
+  ]
+}

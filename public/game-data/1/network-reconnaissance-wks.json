@@ -1,0 +1,68 @@
+{
+  "key": "network-reconnaissance-wks",
+  "title": "Network Reconnaissance",
+  "description": "You perform reconnaissance on the network to gather information about network topology and devices.",
+  "choices": [
+    {
+      "label": "Network Scanning (T1595.001)",
+      "mitreId": "T1595.001",
+      "hourCost": 8,
+      "detectionChance": 40,
+      "successChance": 70,
+      "next": "network-reconnaissance-wks",
+      "requiredItems": [],
+      "rewards": ["Network Map"]
+    },
+    {
+      "label": "Vulnerability Scanning (T1595.002)",
+      "mitreId": "T1595.002",
+      "hourCost": 8,
+      "detectionChance": 80,
+      "successChance": 70,
+      "next": "network-reconnaissance-wks",
+      "requiredItems": ["Network Map"],
+      "rewards": ["Vulnerability Report"]
+    },
+    {
+      "label": "Search for Vulnerable ADCS Certificate (T1046)",
+      "mitreId": "T1046",
+      "hourCost": 2,
+      "detectionChance": 70,
+      "successChance": 60,
+      "limit": 1,
+      "next": "network-reconnaissance-wks",
+      "requiredItems": ["Network Map"],
+      "rewards": ["ADCS Misconfiguration"]
+    },
+    {
+      "label": "Network Service Discovery (T1046)",
+      "mitreId": "T1046",
+      "hourCost": 8,
+      "detectionChance": 40,
+      "successChance": 70,
+      "next": "network-reconnaissance-wks",
+      "requiredItems": ["Network Map"],
+      "rewards": ["Service Information"]
+    },
+    {
+      "label": "Identify PXE Boot Media (TA0006)",
+      "mitreId": "TA0006",
+      "hourCost": 1,
+      "detectionChance": 10,
+      "successChance": 10,
+      "limit": 1,
+      "next": "network-reconnaissance",
+      "requiredItems": [],
+      "rewards": ["NAA Password Hash"]
+    },
+    {
+      "label": "Return to workstation",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "workstation",
+      "requiredItems": []
+    }
+  ]
+}

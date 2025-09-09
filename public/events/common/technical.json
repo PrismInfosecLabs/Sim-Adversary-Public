@@ -1,0 +1,215 @@
+{
+  "name": "Technical Events",
+  "description": "Technical issues and system events that affect both attackers and defenders",
+  "applicableScenarios": ["1", "2", "3"],
+  "applicableTeams": ["red", "blue"],
+  "events": [
+    {
+      "id": "power_outage",
+      "title": "⚡ Power Outage",
+      "message": "A localized power outage has affected parts of the target infrastructure. Some systems are running on backup power with reduced functionality.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.02,
+      "oneTime": true,
+      "messageType": "warning",
+      "conditions": {
+        "minSteps": 8,
+        "maxSteps": 25
+      },
+      "effects": {
+        "hours": -3,
+        "gameState": {
+          "powerOutage": true,
+          "globalDetectionDecrease": 30,
+          "powerOutageStepsRemaining": 6
+        }
+      }
+    },
+    {
+      "id": "network_congestion",
+      "title": "🌐 Network Congestion",
+      "message": "Heavy network traffic is causing significant congestion across the organization's infrastructure. Both your operations and their monitoring are affected.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.08,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 5
+      },
+      "effects": {
+        "hours": -2,
+        "gameState": {
+          "networkCongestion": true,
+          "globalDetectionDecrease": 10,
+          "congestionStepsRemaining": 4
+        }
+      }
+    },
+    {
+      "id": "database_corruption",
+      "title": "🗄️ Database Corruption",
+      "message": "A database corruption incident has occurred in the target environment. IT teams are focused on recovery efforts, reducing security monitoring.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.03,
+      "oneTime": true,
+      "messageType": "info",
+      "conditions": {
+        "minSteps": 12,
+        "minHours": 25
+      },
+      "effects": {
+        "gameState": {
+          "databaseCorruption": true,
+          "globalDetectionDecrease": 25,
+          "dbRecoveryStepsRemaining": 10
+        }
+      }
+    },
+    {
+      "id": "hardware_failure",
+      "title": "💻 Critical Hardware Failure",
+      "message": "A critical server has experienced hardware failure. Emergency maintenance is underway, causing disruptions to both operations and monitoring.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.04,
+      "oneTime": true,
+      "conditions": {
+        "minSteps": 15,
+        "minHours": 30
+      },
+      "effects": {
+        "hours": -1,
+        "gameState": {
+          "hardwareFailure": true,
+          "globalDetectionDecrease": 20,
+          "hardwareRepairStepsRemaining": 8
+        }
+      }
+    },
+    {
+      "id": "software_license_expiration",
+      "title": "📋 Software License Expiration",
+      "message": "Critical security software licenses have expired unexpectedly. Systems are operating with reduced capabilities while licensing issues are resolved.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.05,
+      "oneTime": true,
+      "messageType": "success",
+      "conditions": {
+        "minSteps": 10,
+        "maxSteps": 20
+      },
+      "effects": {
+        "gameState": {
+          "licenseExpired": true,
+          "globalDetectionDecrease": 35,
+          "licensingStepsRemaining": 12
+        }
+      }
+    },
+    {
+      "id": "dns_issues",
+      "title": "🌍 DNS Resolution Issues",
+      "message": "DNS resolution problems are affecting network communications. Both your command and control traffic and their monitoring systems are experiencing delays.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.06,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 6
+      },
+      "effects": {
+        "hours": -1,
+        "gameState": {
+          "dnsIssues": true,
+          "globalDetectionDecrease": 15,
+          "dnsIssuesStepsRemaining": 3
+        }
+      }
+    },
+    {
+      "id": "patch_management_failure",
+      "title": "🔄 Patch Management System Failure",
+      "message": "The automated patch management system has failed, leaving some systems in an inconsistent state. Security teams are manually assessing vulnerabilities.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.07,
+      "oneTime": true,
+      "conditions": {
+        "minSteps": 8,
+        "maxSteps": 18
+      },
+      "effects": {
+        "addItems": ["Unpatched Vulnerabilities"],
+        "gameState": {
+          "patchManagementFailed": true,
+          "globalDetectionDecrease": 10
+        }
+      }
+    },
+    {
+      "id": "cooling_system_failure",
+      "title": "🌡️ Data Center Cooling Failure",
+      "message": "The data center cooling system has malfunctioned. Critical systems are being shut down to prevent overheating, affecting both security monitoring and your operations.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.02,
+      "oneTime": true,
+      "conditions": {
+        "minSteps": 20,
+        "minHours": 40
+      },
+      "effects": {
+        "hours": -4,
+        "gameState": {
+          "coolingFailure": true,
+          "globalDetectionDecrease": 40,
+          "coolingRepairStepsRemaining": 15
+        }
+      }
+    },
+    {
+      "id": "bandwidth_limitation",
+      "title": "📊 Bandwidth Limitations",
+      "message": "Network bandwidth has been severely limited due to infrastructure issues. Large file transfers and extensive monitoring are temporarily restricted.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.09,
+      "oneTime": false,
+      "conditions": {
+        "minSteps": 7
+      },
+      "effects": {
+        "hours": -1,
+        "gameState": {
+          "bandwidthLimited": true,
+          "globalDetectionDecrease": 5,
+          "bandwidthStepsRemaining": 5
+        }
+      }
+    },
+    {
+      "id": "virtualization_host_issue",
+      "title": "☁️ Virtualization Host Problems",
+      "message": "The virtualization infrastructure is experiencing performance issues. Virtual machines are running slower than normal, affecting all operations.",
+      "category": "technical",
+      "triggers": ["step"],
+      "baseProbability": 0.05,
+      "oneTime": true,
+      "conditions": {
+        "minSteps": 12,
+        "minHours": 20
+      },
+      "effects": {
+        "hours": -3,
+        "gameState": {
+          "virtualizationIssues": true,
+          "globalDetectionDecrease": 15,
+          "virtualizationStepsRemaining": 7
+        }
+      }
+    }
+  ]
+}

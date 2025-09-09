@@ -1,0 +1,85 @@
+{
+  "key": "lateral-movement",
+  "title": "Lateral Movement",
+  "description": "Choose a target to move laterally to.",
+  "choices": [
+    {
+      "label": "Move to a Workstation",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "workstation-lateral",
+      "requiredItems": [
+        ["User credentials", "Workstation Machine Account", "Workstation Admin credentials", "Workstation Foothold"],
+         "Network Map"
+       ]
+    },
+    {
+      "label": "Move to a Server",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "server-lateral",
+      "requiredItems": [
+        ["Server Machine Account", "Server Admin credentials", "Server Foothold", "Server Admin Token", "Developer credentials", "Server Admin Password Hash"],
+        "Network Map"
+      ]
+    },
+    {
+      "label": "Move to a Bastion Host",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "bastion-lateral",
+      "requiredItems": [
+        ["Bastion Machine Account", "Developer credentials", "Bastion Foothold", "Server Admin Token", "Server Admin credentials", "Server Admin Token", "Server Admin Password Hash"],
+        "Network Map"
+      ]
+    },
+    {
+      "label": "Move to a Domain Controller",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "domain-controller-lateral",
+      "requiredItems": [
+        ["Domain Controller Machine Account", "Domain Administrator credentials", "Domain Controller Foothold"], 
+        "Network Map"
+      ]
+    },
+    {
+      "label": "Move to the Target System",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "target-system-lateral",
+      "requiredItems": [
+        ["Target System Machine Account", "Target system credentials", "Target System Foothold"],
+       "Network Map"
+     ]
+    },
+    {
+      "label": "Move to the SCCM",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "SCCM-lateral",
+      "requiredItems": [["SCCM Admin credentials", "NAA credentials"], "Network Map"]
+    },
+    {
+      "label": "Return to initial foothold",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "foothold-workstation",
+      "requiredItems": []
+    }
+  ]
+}

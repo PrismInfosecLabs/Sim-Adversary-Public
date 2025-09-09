@@ -1,0 +1,68 @@
+{
+  "name": "Your Event Set Name",
+  "description": "Brief description of what these events represent",
+  "applicableScenarios": ["1", "2", "3", "all"],
+  "applicableTeams": ["red", "blue", "all"],
+  "events": [
+    {
+      "id": "example_basic_event",
+      "title": "📋 Basic Event Example",
+      "message": "This is a simple event that demonstrates the basic structure. Replace this with your event description.",
+      "category": "example",
+      "triggers": ["step"],
+      "baseProbability": 0.1,
+      "oneTime": true,
+      "effects": {
+        "hours": -1
+      }
+    },
+    {
+      "id": "example_complex_event", 
+      "title": "⚙️ Complex Event Example",
+      "message": "This event shows more advanced features including conditions, modifiers, and multiple effects.",
+      "waitMessage": "Waiting for complex process to complete...",
+      "waitEndMessage": "Complex process has finished.",
+      "category": "example",
+      "triggers": ["detection", "time"],
+      "baseProbability": 0.15,
+      "maxProbability": 0.6,
+      "oneTime": false,
+      "messageType": "warning",
+      "conditions": {
+        "minSteps": 5,
+        "maxSteps": 20,
+        "minDetections": 1,
+        "minHours": 10,
+        "maxHours": 100,
+        "skillLevels": ["2", "3"],
+        "defenseMaturity": ["1", "2"],
+        "requiredItems": ["credentials", "Network Map"],
+        "forbiddenItems": ["Persistence"],
+        "allowedSteps": ["network-reconnaissance", "lateral-movement"]
+      },
+      "modifiers": {
+        "skillLevel": {
+          "1": 1.5,
+          "2": 1.0,
+          "3": 0.7
+        },
+        "defenseMaturity": {
+          "1": 0.8,
+          "2": 1.0,
+          "3": 1.3
+        },
+        "detectionMultiplier": 0.1
+      },
+      "effects": {
+        "hours": -3,
+        "contingencies": 1,
+        "addItems": ["New Tool", "Intelligence Report"],
+        "removeItems": ["Old Tool"],
+        "gameState": {
+          "customFlag": true,
+          "globalDetectionIncrease": 10
+        }
+      }
+    }
+  ]
+}

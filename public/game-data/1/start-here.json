@@ -1,0 +1,21 @@
+{
+  "key": "start-here",
+  "title": "You have selected the Phishing scenario.",
+  "description": [
+    "The phishing scenairo requires you to start outside of the target's network and gain a foothold using one of the two phishing techniques we offer here.",
+    "Unlike the other scenarios, in this scenario you can attempt to phish for as much as you like, and regardless of detections during the phishing, you will not lose the game. You can choose to spend a contingency after an unsuccessful phish, or following a detection to establish your foothold. Each attempt will still cost you hours.",
+    "Your goal here is to reach the target server and complete the action before you run out of time, or contingencies and still trigger a detection.",
+    "Good Luck!"
+  ],
+  "choices": [
+    {
+      "label": "Start Phishing Scenario",
+      "mitreId": "",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "phishing",
+      "requiredItems": []
+    }
+  ]
+}

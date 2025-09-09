@@ -1,0 +1,56 @@
+{
+  "key": "domain-controller-activities",
+  "title": "Domain Controller Activities",
+  "description": "You perform various activities on the domain controller to gather information and maintain access.",
+  "choices": [
+    {
+      "label": "Copy NTDS.dit (VSS) (T1003.003)",
+      "mitreId": "T1003.003",
+      "hourCost": 1,
+      "detectionChance": 40,
+      "successChance": 80,
+      "next": "domain-controller-activities",
+      "requiredItems": [["Domain Administrator credentials", "NAA credentials"]],
+      "rewards": ["NTDS.dit"]
+    },
+    {
+      "label": "Copy NTDS.dit (DCSync) (T1003.006)",
+      "mitreId": "T1003.006",
+      "hourCost": 1,
+      "detectionChance": 30,
+      "successChance": 80,
+      "next": "domain-controller-activities",
+      "requiredItems": [["Domain Administrator credentials", "NAA credentials"]],
+      "rewards": ["NTDS.dit"]
+    },
+    {
+      "label": "Minting a Golden Ticket (T1558.001)",
+      "mitreId": "T1558.001",
+      "hourCost": 2,
+      "detectionChance": 60,
+      "successChance": 90,
+      "next": "domain-controller-activities",
+      "requiredItems": [["Domain Administrator credentials", "NAA credentials"]],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Create New Accounts (T1136)",
+      "mitreId": "T1136",
+      "hourCost": 1,
+      "detectionChance": 50,
+      "successChance": 80,
+      "next": "domain-controller-activities",
+      "requiredItems": [["Domain Administrator credentials", "NAA credentials"]],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Return to DC",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "domain-controller",
+      "requiredItems": []
+    }
+  ]
+}

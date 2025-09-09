@@ -1,0 +1,25 @@
+{
+  "key": "phishing",
+  "title": "Initial Access: Phishing",
+  "description": "You attempt to gain initial access to the target network through phishing.",
+  "choices": [
+    {
+      "label": "Spearphishing (T1566.001)",
+      "mitreId": "T1566.001",
+      "hourCost": 30,
+      "detectionChance": 20,
+      "successChance": 70,
+      "next": "foothold-workstation",
+      "requiredItems": []
+    },
+    {
+      "label": "Mass Phishing (T1566.002)",
+      "mitreId": "T1566.002",
+      "hourCost": 10,
+      "detectionChance": 60,
+      "successChance": 40,
+      "next": "foothold-workstation",
+      "requiredItems": []
+    }
+  ]
+}

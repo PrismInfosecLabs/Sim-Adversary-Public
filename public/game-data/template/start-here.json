@@ -1,0 +1,23 @@
+//every scenario should have a start-here.json file - this allows you to discuss the scenario, and provide players with starting items before directing them to the first room.
+//see template.json for a description of the fields.
+{
+  "key": "start-here", //mandatory - must match the file name (minus the .json)
+  "title": "You have selected the XXX scenario.", //mandatory - displayed in game as the name of the current room
+  "description":[
+    "Lorem Ipsum",
+    "Line 2",
+    "You can add",
+    "As many extra lines/paragraphs as you want"
+  ], // the description of the room - uses an array of strings
+  "choices": [
+    {
+      "label": "Start XXX Scenario", //what do we display on the button?
+      "mitreId": "", //is there a mitreId to record?
+      "hourCost": 0, //time cost?
+      "detectionChance": 0, //chance of triggering a detection?
+      "next": "next-room", //where next?
+      "requiredItems": [], //anything needed to trigger this choice?
+      "rewards": ["item1", "item2"] //what do players start with?
+    }
+  ]
+}

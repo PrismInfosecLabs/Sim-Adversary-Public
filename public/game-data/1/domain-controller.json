@@ -1,0 +1,44 @@
+{
+  "key": "domain-controller",
+  "title": "Domain Controller",
+  "description": "You have gained a foothold on a Domain Controller! You will have a high chance of finding new creds, but a high chance of discovery!",
+  "choices": [
+    {
+      "label": "Compromise Domain",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "domain-controller-activities",
+      "requiredItems": []
+    },
+    {
+      "label": "Password Cracking - NTDS.DIT",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "domain-controller",
+      "requiredItems": ["NTDS.dit"],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Lateral Movement Options",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "lateral-movement",
+      "requiredItems": []
+    },
+    {
+      "label": "Return to initial foothold",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "foothold-workstation",
+      "requiredItems": []
+    }
+  ]
+}

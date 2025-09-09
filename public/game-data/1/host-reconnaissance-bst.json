@@ -1,0 +1,139 @@
+{
+  "key": "host-reconnaissance-bst",
+  "title": "Bastion Host Reconnaissance",
+  "description": "You perform reconnaissance on the host system to gather information.",
+  "choices": [
+    {
+      "label": "Unprivileged Local File System Reconnaissance (T1083)",
+      "mitreId": "T1083",
+      "hourCost": 4,
+      "detectionChance": 30,
+      "successChance": 80,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Developer credentials", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["credentials"]
+    },
+    {
+      "label": "Privileged Local File System Reconnaissance (T1083)",
+      "mitreId": "T1083",
+      "hourCost": 8,
+      "detectionChance": 50,
+      "successChance": 90,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Unprivileged Mounted File Shares Reconnaissance (T1135)",
+      "mitreId": "T1135",
+      "hourCost": 12,
+      "detectionChance": 30,
+      "successChance": 80,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Developer credentials", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["credentials"]
+    },
+    {
+      "label": "Privileged Mounted File Shares Reconnaissance (T1135)",
+      "mitreId": "T1135",
+      "hourCost": 24,
+      "detectionChance": 50,
+      "successChance": 90,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Unprivileged Registry Reconnaissance (T1112)",
+      "mitreId": "T1112",
+      "hourCost": 1,
+      "detectionChance": 30,
+      "successChance": 20,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Developer credentials", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["credentials"]
+    },
+    {
+      "label": "Privileged Registry Reconnaissance (T1112)",
+      "mitreId": "T1112",
+      "hourCost": 1,
+      "detectionChance": 50,
+      "successChance": 20,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["credentials"]
+    },
+    {
+      "label": "Unprivileged Credential Vault Reconnaissance (T1555)",
+      "mitreId": "T1555",
+      "hourCost": 1,
+      "detectionChance": 30,
+      "successChance": 80,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Developer credentials", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["credentials"]
+    },
+    {
+      "label": "Privileged Credential Vault Reconnaissance (T1555)",
+      "mitreId": "T1555",
+      "hourCost": 2,
+      "detectionChance": 50,
+      "successChance": 90,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["SCCM Admin credentials"]
+    },
+    {
+      "label": "Dump SAM File (T1003.002)",
+      "mitreId": "T1003.002",
+      "hourCost": 1,
+      "detectionChance": 60,
+      "successChance": 80,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["Developer credentials"]
+    },
+    {
+      "label": "Dump LSASS Memory (T1003.001)",
+      "mitreId": "T1003.001",
+      "hourCost": 1,
+      "detectionChance": 70,
+      "successChance": 80,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["SCCM Admin credentials"]
+    },
+    {
+      "label": "RDP Session Enumeration (T1563.002)",
+      "mitreId": "T1563.002",
+      "hourCost": 1,
+      "detectionChance": 5,
+      "successChance": 100,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Developer credentials", "Server Admin credentials", "NAA credentials"]],
+      "rewards": ["Bastion Session List"]
+    },
+    {
+      "label": "Token Duplication (T1134.001)",
+      "mitreId": "T1134.001",
+      "hourCost": 1,
+      "detectionChance": 50,
+      "successChance": 50,
+      "next": "host-reconnaissance-bst",
+      "requiredItems": [
+        ["Bastion Machine Account", "Server Admin Token", "Server Admin credentials", "NAA credentials"],
+       "Bastion Session List"
+     ],
+      "rewards": ["SCCM Admin Token"]
+    },
+    {
+      "label": "Return to Bastion",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "bastion",
+      "requiredItems": [["Bastion Machine Account", "Server Admin Token", "Developer credentials", "Server Admin credentials", "NAA credentials"]]
+    }
+  ]
+}

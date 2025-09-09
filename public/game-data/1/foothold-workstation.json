@@ -1,0 +1,109 @@
+{
+  "key": "foothold-workstation",
+  "title": "Foothold: Workstation",
+  "description": "You have gained a foothold on a workstation.  Now what?",
+  "choices": [
+    {
+      "label": "Conduct Host Reconnaissance",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "host-reconnaissance",
+      "requiredItems": []
+    },
+    {
+      "label": "Conduct Network Reconnaissance",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "network-reconnaissance",
+      "requiredItems": []
+    },
+    {
+      "label": "Conduct AD Analysis",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "ad-analysis",
+      "requiredItems": []
+    },
+    {
+      "label": "Exploit misconfigurations",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "exploit-misconfiguration",
+      "requiredItems": [["AD Snapshot", "ADCS Misconfiguration", "ACL Misconfiguration"]]
+    },
+    {
+      "label": "Persistence Options",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "persistence-options",
+      "requiredItems": []
+    },
+    {
+      "label": "Lateral Movement Options",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "lateral-movement",
+      "requiredItems": []
+    },
+    {
+      "label": "Test Credentials",
+      "testType": "credentials",
+      "mitreId": "T1550",
+      "hourCost": 1,
+      "detectionChance": 5,
+      "next": "foothold-workstation",
+      "requiredItems": ["credentials"]
+    },
+    {
+      "label": "Password Cracking - NTDS.DIT",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "foothold-workstation",
+      "requiredItems": ["NTDS.dit"],
+      "rewards": ["Target system credentials"]
+    },
+    {
+      "label": "Password Cracking - PXE Media",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "foothold-workstation",
+      "requiredItems": ["NAA Password Hash"],
+      "rewards": ["NAA credentials"]
+    },
+    {
+      "label": "Password Cracking - Kerberoastable Account",
+      "mitreId": "T1110.002",
+      "hourCost": 20,
+      "detectionChance": 0,
+      "successChance": 40,
+      "next": "foothold-workstation",
+      "requiredItems": ["Kerberostable account"],
+      "rewards": ["Domain Administrator credentials"]
+    },
+    {
+      "label": "Start phishing again",
+      "mitreId": "N/A",
+      "hourCost": 0,
+      "detectionChance": 0,
+      "successChance": 100,
+      "next": "phishing",
+      "requiredItems": []
+    }
+  ]
+}
